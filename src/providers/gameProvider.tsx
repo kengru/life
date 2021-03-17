@@ -5,6 +5,7 @@ import {
   createContext,
   FunctionComponent
 } from "react";
+import { useInterval } from "../hooks/useInterval";
 import { generateInitial } from "../utils/modification";
 import { nextGen } from "../utils/game";
 
@@ -35,7 +36,6 @@ export const GameProvider: FunctionComponent = ({ children }) => {
   );
   const [playState, setPlayState] = useState<PlayState>("stopped");
   const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
-  const [intervalId, setIntervalId] = useState<number>(0);
 
   const setDimensions = useCallback((rows: number, columns: number) => {
     console.log("prov ", rows, columns);
@@ -52,20 +52,11 @@ export const GameProvider: FunctionComponent = ({ children }) => {
     [gameState]
   );
 
-  const startPlay = useCallback(
-    (state: PlayState) => {
-      setPlayState(state);
-      if (state === "playing") {
-        const intId = window.setInterval(
-          () => setGameState(nextGen(gameState)),
-          100
-        );
-        setIntervalId(intId);
-      } else {
-        clearInterval(intervalId);
-      }
+  useInterval(
+    () => {
+      setGameState((prevState) => nextGen(prevState));
     },
-    [gameState, intervalId]
+    playState === "playing" ? 500 : null
   );
 
   return (
@@ -74,7 +65,7 @@ export const GameProvider: FunctionComponent = ({ children }) => {
         gameState,
         playState,
         dimensions,
-        changePlay: startPlay,
+        changePlay: setPlayState,
         setDimensions: setDimensions,
         changeState
       }}

@@ -3,6 +3,7 @@ type Dimensions = {
   i: number;
   j: number;
 };
+type Callback = () => void;
 
 interface TableProps {
   columns: number;
