@@ -6,7 +6,7 @@ import {
   FunctionComponent
 } from "react";
 import { useInterval } from "../hooks/useInterval";
-import { generateInitial } from "../utils/modification";
+import { generateInitialLife } from "../utils/modification";
 import { nextGen } from "../utils/game-of-life";
 
 interface IContext {
@@ -32,14 +32,14 @@ const LifeContext = createContext<IContext>({
 
 export const LifeProvider: FunctionComponent = ({ children }) => {
   const [lifeState, setLifeState] = useState<boolean[][]>(
-    generateInitial(15, 30)
+    generateInitialLife(15, 30)
   );
   const [playState, setPlayState] = useState<PlayState>("stopped");
   const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
 
   const setDimensions = useCallback((rows: number, columns: number) => {
     setD({ i: rows, j: columns });
-    setLifeState(generateInitial(rows, columns));
+    setLifeState(generateInitialLife(rows, columns));
   }, []);
 
   const changeState = useCallback(

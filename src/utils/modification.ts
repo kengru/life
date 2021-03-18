@@ -1,4 +1,7 @@
-export const generateInitial = (rows: number, columns: number): boolean[][] => {
+export const generateInitialLife = (
+  rows: number,
+  columns: number
+): boolean[][] => {
   const initial: boolean[][] = [];
   for (let i = 0; i < rows; i++) {
     initial[i] = [];
@@ -7,4 +10,12 @@ export const generateInitial = (rows: number, columns: number): boolean[][] => {
     }
   }
   return initial;
+};
+
+export const genZero = (columns: number): boolean[][] => {
+  const gens: boolean[][] = [];
+  const genZ: boolean[] = new Array(columns).fill(false);
+  genZ[Math.floor(columns / 2)] = true;
+  gens.push(genZ);
+  return gens;
 };
