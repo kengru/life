@@ -7,74 +7,73 @@ import {
 } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { generateInitial } from "../utils/modification";
-import { nextGen } from "../utils/game";
+import { nextGen } from "../utils/game-of-life";
 
 interface IContext {
-  gameState: boolean[][];
+  lifeState: boolean[][];
   playState: PlayState;
   dimensions: Dimensions;
-  changePlay: (state: PlayState) => void;
   setDimensions: (rows: number, columns: number) => void;
+  changePlayState: (state: PlayState) => void;
   changeState: (i: number, j: number) => void;
 }
 
-const GameContext = createContext<IContext>({
-  gameState: [],
+const LifeContext = createContext<IContext>({
+  lifeState: [],
   playState: "stopped",
   dimensions: {
     i: 15,
     j: 30
   },
-  changePlay: () => {},
   setDimensions: () => {},
+  changePlayState: () => {},
   changeState: () => {}
 });
 
-export const GameProvider: FunctionComponent = ({ children }) => {
-  const [gameState, setGameState] = useState<boolean[][]>(
+export const LifeProvider: FunctionComponent = ({ children }) => {
+  const [lifeState, setLifeState] = useState<boolean[][]>(
     generateInitial(15, 30)
   );
   const [playState, setPlayState] = useState<PlayState>("stopped");
   const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
 
   const setDimensions = useCallback((rows: number, columns: number) => {
-    console.log("prov ", rows, columns);
     setD({ i: rows, j: columns });
-    setGameState(generateInitial(rows, columns));
+    setLifeState(generateInitial(rows, columns));
   }, []);
 
   const changeState = useCallback(
     (i: number, j: number) => {
-      const newGameState = [...gameState];
-      newGameState[i][j] = !gameState[i][j];
-      setGameState(newGameState);
+      const newGameState = [...lifeState];
+      newGameState[i][j] = !lifeState[i][j];
+      setLifeState(newGameState);
     },
-    [gameState]
+    [lifeState]
   );
 
   useInterval(
     () => {
-      setGameState((prevState) => nextGen(prevState));
+      setLifeState((prevState) => nextGen(prevState));
     },
-    playState === "playing" ? 10 : null
+    playState === "playing" ? 100 : null
   );
 
   return (
-    <GameContext.Provider
+    <LifeContext.Provider
       value={{
-        gameState,
+        lifeState,
         playState,
         dimensions,
-        changePlay: setPlayState,
         setDimensions: setDimensions,
+        changePlayState: setPlayState,
         changeState
       }}
     >
       {children}
-    </GameContext.Provider>
+    </LifeContext.Provider>
   );
 };
 
-export function useGame() {
-  return useContext(GameContext);
+export function useLife() {
+  return useContext(LifeContext);
 }

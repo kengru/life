@@ -1,9 +1,10 @@
 import { Fragment, useCallback, useState } from "react";
-import { Table } from "./components/Table";
-import { useGame } from "./providers/gameProvider";
+
+import { Table } from "./components/Life/Table";
+import { useLife } from "./providers/lifeProvider";
 
 function App() {
-  const { playState, dimensions, changePlay, setDimensions } = useGame();
+  const { playState, dimensions, setDimensions, changePlayState } = useLife();
   const [rows, setRows] = useState(15);
   const [columns, setColumns] = useState(30);
 
@@ -27,7 +28,7 @@ function App() {
       <button onClick={() => changeDimensions()}>Change</button>
       <button
         onClick={() =>
-          changePlay(playState === "stopped" ? "playing" : "stopped")
+          changePlayState(playState === "stopped" ? "playing" : "stopped")
         }
       >
         {playState === "playing" ? "Stop" : "Play"}
