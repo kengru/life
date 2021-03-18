@@ -9,7 +9,7 @@ export const Table = (props: TableProps) => {
 
   return (
     <table style={{ height: "80%", width: "100%" }}>
-      <tbody style={{ width: "100%" }}>{tableElements}</tbody>
+      <tbody style={{ width: "800px" }}>{tableElements}</tbody>
     </table>
   );
 };

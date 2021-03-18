@@ -56,7 +56,7 @@ export const GameProvider: FunctionComponent = ({ children }) => {
     () => {
       setGameState((prevState) => nextGen(prevState));
     },
-    playState === "playing" ? 500 : null
+    playState === "playing" ? 10 : null
   );
 
   return (
