@@ -10,15 +10,18 @@ import { generateInitialLife } from "../utils/modification";
 import { nextGen } from "../utils/game-of-life";
 
 interface IContext {
+  clicked: boolean;
   lifeState: boolean[][];
   playState: PlayState;
   dimensions: Dimensions;
   setDimensions: (rows: number, columns: number) => void;
   changePlayState: (state: PlayState) => void;
   changeState: (i: number, j: number) => void;
+  changeClicked: (click: boolean) => void;
 }
 
 const LifeContext = createContext<IContext>({
+  clicked: false,
   lifeState: [],
   playState: "stopped",
   dimensions: {
@@ -27,10 +30,12 @@ const LifeContext = createContext<IContext>({
   },
   setDimensions: () => {},
   changePlayState: () => {},
-  changeState: () => {}
+  changeState: () => {},
+  changeClicked: () => {}
 });
 
 export const LifeProvider: FunctionComponent = ({ children }) => {
+  const [clicked, setClicked] = useState(false);
   const [lifeState, setLifeState] = useState<boolean[][]>(
     generateInitialLife(15, 30)
   );
@@ -61,11 +66,13 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   return (
     <LifeContext.Provider
       value={{
+        clicked,
         lifeState,
         playState,
         dimensions,
         setDimensions: setDimensions,
         changePlayState: setPlayState,
+        changeClicked: setClicked,
         changeState
       }}
     >
