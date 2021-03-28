@@ -18,20 +18,35 @@ export const Life = () => {
       <input
         type="number"
         value={rows}
+        disabled={playState === "playing"}
         onChange={(val) => setRows(+val.currentTarget.value)}
       />
       <input
         type="number"
         value={columns}
+        disabled={playState === "playing"}
         onChange={(val) => setColumns(+val.currentTarget.value)}
       />
-      <button onClick={() => changeDimensions()}>Change</button>
+      <button
+        onClick={() => changeDimensions()}
+        disabled={playState === "playing"}
+      >
+        Change
+      </button>
       <button
         onClick={() =>
           changePlayState(playState === "stopped" ? "playing" : "stopped")
         }
       >
-        {playState === "playing" ? "Stop" : "Play"}
+        {playState === "playing" ? "Pause" : "Play"}
+      </button>
+      <button
+        onClick={() => {
+          changePlayState("stopped");
+          setDimensions(rows, columns);
+        }}
+      >
+        Clear
       </button>
     </Fragment>
   );

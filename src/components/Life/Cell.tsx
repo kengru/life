@@ -6,8 +6,11 @@ export const Cell = (props: CellProps) => {
 
   return (
     <td
-      style={{ backgroundColor: lifeState[i][j] ? "red" : "black" }}
-      onClick={playState === "stopped" ? () => changeState(i, j) : undefined}
+      draggable={false}
+      style={{ backgroundColor: lifeState[i][j] ? "#562f7c" : "black" }}
+      onMouseDown={
+        playState === "stopped" ? () => changeState(i, j) : undefined
+      }
     ></td>
   );
 };

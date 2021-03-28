@@ -1,5 +1,7 @@
 import { Row } from "./Row";
 
+import "../../table.css";
+
 export const Table = (props: TableProps) => {
   const { columns, rows } = props;
 
