@@ -2,12 +2,7 @@ import { useLife } from "../../providers/lifeProvider";
 
 export const Cell = (props: CellProps) => {
   const { i, j } = props;
-  const {
-    clicked,
-    lifeState,
-    playState,
-    changeState,
-  } = useLife();
+  const { clicked, lifeState, playState, changeState } = useLife();
 
   const onClick = () => {
     if (playState === "stopped") {
@@ -18,7 +13,7 @@ export const Cell = (props: CellProps) => {
   return (
     <td
       draggable={false}
-      style={{ backgroundColor: lifeState[i][j] ? "#562f7c" : "black" }}
+      className={lifeState[i][j] ? "aliveCell" : "deadCell"}
       onMouseOver={
         clicked
           ? playState === "stopped"
@@ -26,6 +21,7 @@ export const Cell = (props: CellProps) => {
             : undefined
           : undefined
       }
+      onMouseDown={onClick}
       onClick={onClick}
     ></td>
   );

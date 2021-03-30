@@ -1,12 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import GoogleFontLoader from "react-google-font-loader";
 
-import "./index.css";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
+    <GoogleFontLoader
+      fonts={[
+        {
+          font: "Source Code Pro",
+          weights: [400, 500, 600]
+        }
+      ]}
+    />
     <App />
   </React.StrictMode>,
   document.getElementById("root")

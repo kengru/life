@@ -1,0 +1,57 @@
+:root {
+  --alive: #7fdb4a;
+  --aliveRecent: #b2e992;
+  --aliveOld: #5fa438;
+  --primaryStat: #3281c7;
+  --secondaryStat: #353494;
+  --tertiaryStat: #ed3239;
+  --whiteSpace: #f2f2f2;
+  --diedNow: #cccccc;
+  --deadCell: #1a1a1a;
+  --tableBorder: #141414;
+}
+
+body {
+  background-color: var(--whiteSpace);
+}
+
+table {
+  height: 100%;
+  width: 100%;
+  border-spacing: 0px;
+}
+
+td {
+  border: 1px solid var(--tableBorder);
+  transition: background-color 100ms;
+}
+
+.whole {
+  display: flex;
+  height: 100vh;
+}
+
+.sideConfig {
+  flex: 1;
+  background-color: var(--deadCell);
+}
+
+.title {
+  color: var(--whiteSpace);
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Source Code Pro";
+}
+
+.gameTable {
+  flex: 4;
+  padding: 10em;
+}
+
+.aliveCell {
+  background-color: var(--alive);
+}
+
+.deadCell {
+  background-color: var(--deadCell);
+}

@@ -1,12 +1,16 @@
 import { Life } from "./containers/Life";
-// import { ElementaryCA } from "./containers/ElementaryCA";
+import { SideConfig } from "./containers/SideConfig";
 import { LifeProvider } from "./providers/lifeProvider";
 
+import "./styles.css";
+
 export const App = () => {
-  // return <ElementaryCA />;
   return (
     <LifeProvider>
-      <Life />
+      <div className="whole">
+        <SideConfig />
+        <Life />
+      </div>
     </LifeProvider>
   );
 };

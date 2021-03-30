@@ -1,8 +1,0 @@
-table {
-  border-spacing: 0px;
-}
-
-td {
-  border: 1px solid #562f7c;
-  transition: background-color 100ms;
-}
