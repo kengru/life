@@ -1,17 +1,28 @@
-interface Props {
-  generation: number;
-  alive: number;
-  dead: number;
-  borned: number;
-  died: number;
-}
+export const Stats = (props: StatsProps) => {
+  const { generation, alive, dead, borned, died } = props;
 
-export const Stats = (props: Props) => {
   return (
     <div className="stats">
-      <h2>Board Stats</h2>
+      <h2>Board stats</h2>
       <hr />
-      <div className="info"></div>
+      <div>
+        <div className="stat">
+          <div className="amount gen">{generation}</div> <div>Generation</div>
+        </div>
+        <div className="stat">
+          <span className="amount live">{alive}</span> <span>Live cells</span>
+        </div>
+        <div className="stat">
+          <span className="amount dead">{dead}</span> <span>Dead cells</span>
+        </div>
+        <div className="stat">
+          <span className="amount borned">{borned}</span>{" "}
+          <span>Borned cells</span>
+        </div>
+        <div className="stat">
+          <span className="amount died">{died}</span> <span>Died now</span>
+        </div>
+      </div>
     </div>
   );
 };

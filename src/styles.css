@@ -60,8 +60,62 @@ td {
   color: var(--whiteSpace);
 }
 
-.stats h2 {
+.options {
+  color: var(--whiteSpace);
+  margin-top: 20px;
+}
+
+.stats h2,
+.options h2 {
   margin-bottom: 0px;
+}
+
+.stat {
+  display: flex;
+  margin: 8px 0px 8px 0px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.amount {
+  width: 70px;
+}
+
+/* stat colors */
+.gen,
+.live {
+  color: var(--aliveOld);
+}
+
+.dead {
+  color: var(--tertiaryStat);
+}
+
+.borned {
+  color: var(--aliveRecent);
+}
+
+.died {
+  color: var(--diedNow);
+}
+/* end of stat colors */
+
+.options form {
+  margin-top: 20px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 5px 0px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.option input {
+  width: 50px;
+  font-size: 20px;
+  margin-right: 20px;
 }
 
 .gameTable {

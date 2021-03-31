@@ -2,11 +2,26 @@ import { useCallback, useState } from "react";
 import { useLife } from "../providers/lifeProvider";
 import { Button } from "../components/UI/Button";
 import { Stats } from "../components/UI/Stats";
+import { Options } from "../components/UI/Options";
 
 export const SideConfig = () => {
-  const { playState, setDimensions, changePlayState } = useLife();
+  const {
+    speed,
+    playState,
+    setSpeed,
+    setDimensions,
+    changePlayState
+  } = useLife();
   const [rows, setRows] = useState(15);
   const [columns, setColumns] = useState(30);
+
+  const applyOptions = useCallback(
+    (rows: number, columns: number, speed: number) => {
+      setDimensions(rows, columns);
+      setSpeed(speed);
+    },
+    [setDimensions, setSpeed]
+  );
 
   const changeDimensions = useCallback(() => {
     setDimensions(rows, columns);
@@ -19,8 +34,14 @@ export const SideConfig = () => {
         <br />
         Game of Life
       </p>
-      <Button />
+      <Button label="Play" action={() => {}} />
       <Stats generation={0} alive={0} dead={0} borned={0} died={0} />
+      <Options
+        rows={rows}
+        columns={columns}
+        speed={speed}
+        applyOptions={applyOptions}
+      />
       <input
         type="number"
         value={rows}

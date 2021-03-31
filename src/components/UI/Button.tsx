@@ -1,7 +1,9 @@
-export const Button = () => {
+export const Button = (props: ButtonProps) => {
+  const { label, action } = props;
+
   return (
-    <div className="button">
-      <p>Play</p>
+    <div className="button" onClick={action}>
+      <p>{label}</p>
     </div>
   );
 };
