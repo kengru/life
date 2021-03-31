@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import { useLife } from "../providers/lifeProvider";
+import { Button } from "../components/UI/Button";
+import { Stats } from "../components/UI/Stats";
 
 export const SideConfig = () => {
   const { playState, setDimensions, changePlayState } = useLife();
@@ -17,6 +19,8 @@ export const SideConfig = () => {
         <br />
         Game of Life
       </p>
+      <Button />
+      <Stats generation={0} alive={0} dead={0} borned={0} died={0} />
       <input
         type="number"
         value={rows}

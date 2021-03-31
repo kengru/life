@@ -32,15 +32,36 @@ td {
 }
 
 .sideConfig {
-  flex: 1;
+  flex: 1.1;
+  padding: 28px;
+  font-family: "Source Code Pro";
   background-color: var(--deadCell);
 }
 
 .title {
   color: var(--whiteSpace);
   font-size: 32px;
-  font-weight: 600;
-  font-family: "Source Code Pro";
+  font-weight: 700;
+}
+
+.button {
+  display: flex;
+  height: 10px;
+  padding: 30px;
+  align-items: center;
+  cursor: pointer;
+  color: var(--deadCell);
+  font-size: 32px;
+  font-weight: 800;
+  background-color: var(--alive);
+}
+
+.stats {
+  color: var(--whiteSpace);
+}
+
+.stats h2 {
+  margin-bottom: 0px;
 }
 
 .gameTable {

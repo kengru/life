@@ -12,7 +12,7 @@ ReactDOM.render(
       fonts={[
         {
           font: "Source Code Pro",
-          weights: [400, 500, 600]
+          weights: [400, 500, 600, 700, 800]
         }
       ]}
     />
