@@ -1,9 +1,9 @@
 export const Button = (props: ButtonProps) => {
-  const { label, action } = props;
+  const { type, action } = props;
 
   return (
-    <div className="button" onClick={action}>
-      <p>{label}</p>
+    <div className={`button ${type}`} onClick={action}>
+      <p>{`${type[0].toUpperCase()}${type.slice(1)}`}</p>
     </div>
   );
 };

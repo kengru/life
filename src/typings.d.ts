@@ -42,6 +42,6 @@ interface OptionsForm {
 }
 
 interface ButtonProps {
-  label: string;
   action: any;
+  type: "play" | "pause" | "stop" | "clear";
 }

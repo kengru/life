@@ -56,6 +56,35 @@ td {
   background-color: var(--alive);
 }
 
+.pauseButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.play {
+  background-color: var(--alive);
+}
+
+.pause {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  text-align: center;
+  padding: 30px 10px 30px 10px;
+  background-color: var(--secondaryStat);
+}
+
+.stop {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  text-align: center;
+  padding: 30px 10px 30px 10px;
+  background-color: var(--tertiaryStat);
+}
+
 .apply {
   margin-top: 20px;
   background-color: var(--whiteSpace);
