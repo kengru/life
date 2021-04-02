@@ -7,7 +7,7 @@ export const Stats = (props: StatsProps) => {
       <hr />
       <div>
         <div className="stat">
-          <div className="amount gen">{generation}</div> <div>Generation</div>
+          <div className="amount gen">{generation}</div> <span>Generation</span>
         </div>
         <div className="stat">
           <span className="amount live">{alive}</span> <span>Live cells</span>

@@ -50,3 +50,16 @@ export const nextGen = (current: boolean[][]): boolean[][] => {
   }
   return next;
 };
+
+export const countLive = (gen: boolean[][]): aliveDead => {
+  const initial: aliveDead = { alive: 0, dead: 0 };
+  const count = gen.reduce((prev, current) => {
+    const alive = current.filter((val) => val);
+    const dead = current.filter((val) => !val);
+    return {
+      alive: prev.alive + alive.length,
+      dead: prev.dead + dead.length,
+    };
+  }, initial);
+  return count;
+};

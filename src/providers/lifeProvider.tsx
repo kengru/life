@@ -3,14 +3,17 @@ import {
   useContext,
   useCallback,
   createContext,
-  FunctionComponent
+  FunctionComponent,
 } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { generateInitialLife } from "../utils/modification";
-import { nextGen } from "../utils/game-of-life";
+import { nextGen, countLive } from "../utils/game-of-life";
 
 interface IContext {
   speed: number;
+  generation: number;
+  alive: number;
+  dead: number;
   clicked: boolean;
   lifeState: boolean[][];
   playState: PlayState;
@@ -24,18 +27,21 @@ interface IContext {
 
 const LifeContext = createContext<IContext>({
   speed: 100,
+  generation: 0,
+  alive: 0,
+  dead: 0,
   clicked: false,
   lifeState: [],
   playState: "stopped",
   dimensions: {
     i: 15,
-    j: 30
+    j: 30,
   },
   setSpeed: () => {},
   setDimensions: () => {},
   changePlayState: () => {},
   changeState: () => {},
-  changeClicked: () => {}
+  changeClicked: () => {},
 });
 
 export const LifeProvider: FunctionComponent = ({ children }) => {
@@ -46,10 +52,13 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   const [playState, setPlayState] = useState<PlayState>("stopped");
   const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
   const [speed, setSpeed] = useState(100);
+  const [generation, setGeneration] = useState(0);
+  const [alive, setAlive] = useState(0);
+  const [dead, setDead] = useState(0);
 
   const setDimensions = useCallback((rows: number, columns: number) => {
-    setD({ i: rows, j: columns });
     setLifeState(generateInitialLife(rows, columns));
+    setD({ i: rows, j: columns });
   }, []);
 
   const changeState = useCallback(
@@ -64,6 +73,10 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   useInterval(
     () => {
       setLifeState((prevState) => nextGen(prevState));
+      setGeneration((prevGen) => prevGen + 1);
+      const count = countLive(lifeState);
+      setAlive(count.alive);
+      setDead(count.dead);
     },
     playState === "playing" ? speed : null
   );
@@ -72,6 +85,9 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
     <LifeContext.Provider
       value={{
         speed,
+        generation,
+        alive,
+        dead,
         clicked,
         lifeState,
         playState,
@@ -80,7 +96,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
         setDimensions: setDimensions,
         changePlayState: setPlayState,
         changeClicked: setClicked,
-        changeState
+        changeState,
       }}
     >
       {children}

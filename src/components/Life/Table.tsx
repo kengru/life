@@ -16,7 +16,7 @@ export const Table = (props: TableProps) => {
         onMouseDown={() => changeClicked(true)}
         onMouseUp={() => changeClicked(false)}
       >
-        <tbody style={{ width: "800px" }}>{tableElements}</tbody>
+        <tbody>{tableElements}</tbody>
       </table>
     </div>
   );

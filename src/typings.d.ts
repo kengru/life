@@ -42,6 +42,11 @@ interface OptionsForm {
 }
 
 interface ButtonProps {
-  action: any;
+  action: () => void;
   type: "play" | "pause" | "stop" | "clear";
+}
+
+type aliveDead = {
+  alive: number;
+  dead: number;
 }
