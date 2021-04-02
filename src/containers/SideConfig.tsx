@@ -10,7 +10,7 @@ export const SideConfig = () => {
     playState,
     setSpeed,
     setDimensions,
-    changePlayState
+    changePlayState,
   } = useLife();
   const [rows, setRows] = useState(15);
   const [columns, setColumns] = useState(30);
@@ -27,6 +27,10 @@ export const SideConfig = () => {
     setDimensions(rows, columns);
   }, [setDimensions, rows, columns]);
 
+  const play = () => {
+    changePlayState("playing");
+  };
+
   return (
     <div className="sideConfig">
       <p className="title">
@@ -34,7 +38,7 @@ export const SideConfig = () => {
         <br />
         Game of Life
       </p>
-      <Button label="Play" action={() => {}} />
+      <Button label="Play" action={play} />
       <Stats generation={0} alive={0} dead={0} borned={0} died={0} />
       <Options
         rows={rows}
@@ -42,24 +46,6 @@ export const SideConfig = () => {
         speed={speed}
         applyOptions={applyOptions}
       />
-      <input
-        type="number"
-        value={rows}
-        disabled={playState === "playing"}
-        onChange={(val) => setRows(+val.currentTarget.value)}
-      />
-      <input
-        type="number"
-        value={columns}
-        disabled={playState === "playing"}
-        onChange={(val) => setColumns(+val.currentTarget.value)}
-      />
-      <button
-        onClick={() => changeDimensions()}
-        disabled={playState === "playing"}
-      >
-        Change
-      </button>
       <button
         onClick={() =>
           changePlayState(playState === "stopped" ? "playing" : "stopped")

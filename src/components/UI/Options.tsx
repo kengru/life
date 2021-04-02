@@ -1,12 +1,13 @@
 import { useForm, Controller } from "react-hook-form";
-// import { Button } from "./Button";
+import { dataParse } from "../../utils/utility";
 
 export const Options = (props: OptionsProps) => {
   const { rows, columns, speed, applyOptions } = props;
   const { control, handleSubmit } = useForm();
 
   const onSubmit = (data: OptionsForm) => {
-    applyOptions(+data.rows, +data.columns, +data.speed);
+    const parsed = dataParse(data);
+    applyOptions(parsed.rows, parsed.columns, parsed.speed);
   };
 
   return (
@@ -45,17 +46,23 @@ export const Options = (props: OptionsProps) => {
             <Controller
               name="speed"
               control={control}
-              defaultValue={speed}
+              defaultValue={speed / 1000}
               render={({ onChange, value }) => (
-                <input type="number" value={value} onChange={onChange} />
+                <input
+                  type="number"
+                  value={value}
+                  onChange={onChange}
+                  step={0.1}
+                />
               )}
             />
           </div>
           <span>Speed</span>
         </div>
-        <input style={{ all: "unset" }} className="button" type="submit" />
+        <div className="button apply">
+          <input style={{ all: "unset" }} type="submit" value="Apply" />
+        </div>
       </form>
-      {/* <Button label="Apply" action={() => applyOptions(rows, columns, speed)} /> */}
     </div>
   );
 };
