@@ -49,15 +49,23 @@ export const nextGen = (current: boolean[][]): GenInfo => {
     }
   }
 
-  // const count = next.reduce((prev, current) => {
-  //   // current.filter()
-  //   return 0;
-  // }, 0);
+  let born = 0;
+  let died = 0;
+
+  for (let height = 0; height < current.length; height++) {
+    for (let width = 0; width < current[height].length; width++) {
+      if (!current[height][width] && next[height][width]) {
+        born += 1;
+      } else if (current[height][width] && !next[height][width]) {
+        died += 1;
+      }
+    }
+  }
 
   return {
     nextGen: next,
-    borned: 0,
-    died: 0,
+    born: born,
+    died: died,
   };
 };
 

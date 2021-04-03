@@ -14,7 +14,7 @@ interface IContext {
   generation: number;
   alive: number;
   dead: number;
-  borned: number;
+  born: number;
   died: number;
   clicked: boolean;
   lifeState: boolean[][];
@@ -28,17 +28,17 @@ interface IContext {
 }
 
 const LifeContext = createContext<IContext>({
-  speed: 200,
+  speed: 100,
   generation: 0,
   alive: 0,
   dead: 0,
-  borned: 0,
+  born: 0,
   died: 0,
   clicked: false,
   lifeState: [],
-  playState: "stopped",
+  playState: "cleared",
   dimensions: {
-    i: 30,
+    i: 15,
     j: 30,
   },
   setSpeed: () => {},
@@ -53,18 +53,23 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   const [lifeState, setLifeState] = useState<boolean[][]>(
     generateInitialLife(15, 30)
   );
-  const [playState, setPlayState] = useState<PlayState>("stopped");
-  const [dimensions, setD] = useState<Dimensions>({ i: 30, j: 30 });
-  const [speed, setSpeed] = useState(200);
+  const [playState, setPlayState] = useState<PlayState>("cleared");
+  const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
+  const [speed, setSpeed] = useState(100);
   const [generation, setGeneration] = useState(0);
   const [alive, setAlive] = useState(0);
   const [dead, setDead] = useState(0);
-  const [borned, setBorned] = useState(0);
+  const [born, setBorn] = useState(0);
   const [died, setDied] = useState(0);
 
   const setDimensions = useCallback((rows: number, columns: number) => {
     setLifeState(generateInitialLife(rows, columns));
     setD({ i: rows, j: columns });
+    setGeneration(0);
+    setAlive(0);
+    setDead(0);
+    setBorn(0);
+    setDied(0);
   }, []);
 
   const changeState = useCallback(
@@ -84,7 +89,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
       const count = countLive(lifeState);
       setAlive(count.alive);
       setDead(count.dead);
-      setBorned(genInfo.borned);
+      setBorn(genInfo.born);
       setDied(genInfo.died);
     },
     playState === "playing" ? speed : null
@@ -97,7 +102,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
         generation,
         alive,
         dead,
-        borned,
+        born,
         died,
         clicked,
         lifeState,

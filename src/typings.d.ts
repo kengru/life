@@ -1,4 +1,4 @@
-type PlayState = "playing" | "stopped";
+type PlayState = "playing" | "stopped" | "paused" | "cleared";
 type Dimensions = {
   i: number;
   j: number;
@@ -24,7 +24,7 @@ interface StatsProps {
   generation: number;
   alive: number;
   dead: number;
-  borned: number;
+  born: number;
   died: number;
 }
 
@@ -43,7 +43,7 @@ interface OptionsForm {
 
 interface ButtonProps {
   action: () => void;
-  type: "play" | "pause" | "stop" | "clear";
+  type: "play" | "pause" | "stop" | "clear" | "resume";
 }
 
 type AliveDead = {
@@ -53,6 +53,6 @@ type AliveDead = {
 
 type GenInfo = {
   nextGen: boolean[][];
-  borned: number;
+  born: number;
   died: number;
 }

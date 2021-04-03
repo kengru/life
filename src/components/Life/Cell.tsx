@@ -16,7 +16,7 @@ export const Cell = (props: CellProps) => {
       className={lifeState[i][j] ? "aliveCell" : "deadCell"}
       onMouseOver={
         clicked
-          ? playState === "stopped"
+          ? playState !== "playing" && playState !== "stopped"
             ? () => changeState(i, j)
             : undefined
           : undefined

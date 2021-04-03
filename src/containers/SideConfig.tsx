@@ -10,12 +10,14 @@ export const SideConfig = () => {
     generation,
     alive,
     dead,
+    born,
+    died,
     playState,
     setSpeed,
     setDimensions,
     changePlayState,
   } = useLife();
-  const [rows, setRows] = useState(30);
+  const [rows, setRows] = useState(15);
   const [columns, setColumns] = useState(30);
 
   const applyOptions = useCallback(
@@ -37,7 +39,41 @@ export const SideConfig = () => {
   };
 
   const pause = () => {
+    changePlayState("paused");
+  };
+
+  const stop = () => {
     changePlayState("stopped");
+  };
+
+  const clear = () => {
+    changePlayState("cleared");
+    setDimensions(rows, columns);
+  };
+
+  const elements = () => {
+    switch (playState) {
+      case "cleared":
+        return <Button type="play" action={play} />;
+      case "paused":
+        return (
+          <div className="pauseButtons">
+            <Button type="resume" action={play} />
+            <Button type="stop" action={stop} />
+          </div>
+        );
+      case "playing":
+        return (
+          <div className="pauseButtons">
+            <Button type="pause" action={pause} />
+            <Button type="stop" action={stop} />
+          </div>
+        );
+      case "stopped":
+        return <Button type="clear" action={clear} />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -47,20 +83,13 @@ export const SideConfig = () => {
         <br />
         Game of Life
       </p>
-      {playState === "stopped" ? (
-        <Button type="play" action={play} />
-      ) : (
-        <div className="pauseButtons">
-          <Button type="pause" action={pause} />
-          <Button type="stop" action={pause} />
-        </div>
-      )}
+      {elements()}
       <Stats
         generation={generation}
         alive={alive}
         dead={dead}
-        borned={0}
-        died={0}
+        born={born}
+        died={died}
       />
       <Options
         rows={rows}

@@ -1,5 +1,5 @@
 export const Stats = (props: StatsProps) => {
-  const { generation, alive, dead, borned, died } = props;
+  const { generation, alive, dead, born, died } = props;
 
   return (
     <div className="stats">
@@ -16,8 +16,8 @@ export const Stats = (props: StatsProps) => {
           <span className="amount dead">{dead}</span> <span>Dead cells</span>
         </div>
         <div className="stat">
-          <span className="amount borned">{borned}</span>{" "}
-          <span>Borned cells</span>
+          <span className="amount born">{born}</span>{" "}
+          <span>Born cells</span>
         </div>
         <div className="stat">
           <span className="amount died">{died}</span> <span>Died now</span>

@@ -85,6 +85,11 @@ td {
   background-color: var(--tertiaryStat);
 }
 
+.clear {
+  color: var(--whiteSpace);
+  background-color: var(--primaryStat);
+}
+
 .apply {
   margin-top: 20px;
   background-color: var(--whiteSpace);
@@ -125,7 +130,7 @@ td {
   color: var(--tertiaryStat);
 }
 
-.borned {
+.born {
   color: var(--aliveRecent);
 }
 
