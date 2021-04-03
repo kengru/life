@@ -46,7 +46,13 @@ interface ButtonProps {
   type: "play" | "pause" | "stop" | "clear";
 }
 
-type aliveDead = {
+type AliveDead = {
   alive: number;
   dead: number;
+}
+
+type GenInfo = {
+  nextGen: boolean[][];
+  borned: number;
+  died: number;
 }

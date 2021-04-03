@@ -27,7 +27,7 @@ const neighbors = (
   return amount;
 };
 
-export const nextGen = (current: boolean[][]): boolean[][] => {
+export const nextGen = (current: boolean[][]): GenInfo => {
   const next: boolean[][] = _.cloneDeep(current);
 
   for (let height = 0; height < current.length; height++) {
@@ -48,11 +48,21 @@ export const nextGen = (current: boolean[][]): boolean[][] => {
       }
     }
   }
-  return next;
+
+  // const count = next.reduce((prev, current) => {
+  //   // current.filter()
+  //   return 0;
+  // }, 0);
+
+  return {
+    nextGen: next,
+    borned: 0,
+    died: 0,
+  };
 };
 
-export const countLive = (gen: boolean[][]): aliveDead => {
-  const initial: aliveDead = { alive: 0, dead: 0 };
+export const countLive = (gen: boolean[][]): AliveDead => {
+  const initial: AliveDead = { alive: 0, dead: 0 };
   const count = gen.reduce((prev, current) => {
     const alive = current.filter((val) => val);
     const dead = current.filter((val) => !val);

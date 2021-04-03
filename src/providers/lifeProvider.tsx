@@ -14,6 +14,8 @@ interface IContext {
   generation: number;
   alive: number;
   dead: number;
+  borned: number;
+  died: number;
   clicked: boolean;
   lifeState: boolean[][];
   playState: PlayState;
@@ -26,15 +28,17 @@ interface IContext {
 }
 
 const LifeContext = createContext<IContext>({
-  speed: 100,
+  speed: 200,
   generation: 0,
   alive: 0,
   dead: 0,
+  borned: 0,
+  died: 0,
   clicked: false,
   lifeState: [],
   playState: "stopped",
   dimensions: {
-    i: 15,
+    i: 30,
     j: 30,
   },
   setSpeed: () => {},
@@ -50,11 +54,13 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
     generateInitialLife(15, 30)
   );
   const [playState, setPlayState] = useState<PlayState>("stopped");
-  const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
-  const [speed, setSpeed] = useState(100);
+  const [dimensions, setD] = useState<Dimensions>({ i: 30, j: 30 });
+  const [speed, setSpeed] = useState(200);
   const [generation, setGeneration] = useState(0);
   const [alive, setAlive] = useState(0);
   const [dead, setDead] = useState(0);
+  const [borned, setBorned] = useState(0);
+  const [died, setDied] = useState(0);
 
   const setDimensions = useCallback((rows: number, columns: number) => {
     setLifeState(generateInitialLife(rows, columns));
@@ -72,11 +78,14 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
 
   useInterval(
     () => {
-      setLifeState((prevState) => nextGen(prevState));
+      const genInfo = nextGen(lifeState);
+      setLifeState(genInfo.nextGen);
       setGeneration((prevGen) => prevGen + 1);
       const count = countLive(lifeState);
       setAlive(count.alive);
       setDead(count.dead);
+      setBorned(genInfo.borned);
+      setDied(genInfo.died);
     },
     playState === "playing" ? speed : null
   );
@@ -88,6 +97,8 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
         generation,
         alive,
         dead,
+        borned,
+        died,
         clicked,
         lifeState,
         playState,
