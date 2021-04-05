@@ -15,7 +15,7 @@ export const SideConfig = () => {
     playState,
     setSpeed,
     setDimensions,
-    changePlayState,
+    changePlayState
   } = useLife();
   const [rows, setRows] = useState(15);
   const [columns, setColumns] = useState(30);
@@ -29,10 +29,6 @@ export const SideConfig = () => {
     },
     [setRows, setColumns, setDimensions, setSpeed]
   );
-
-  // const changeDimensions = useCallback(() => {
-  //   setDimensions(rows, columns);
-  // }, [setDimensions, rows, columns]);
 
   const play = () => {
     changePlayState("playing");

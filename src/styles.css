@@ -51,7 +51,7 @@ td {
   align-items: center;
   cursor: pointer;
   color: var(--deadCell);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 800;
   background-color: var(--alive);
 }
@@ -83,6 +83,15 @@ td {
   text-align: center;
   padding: 30px 10px 30px 10px;
   background-color: var(--tertiaryStat);
+}
+
+.resume {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  padding: 30px 10px 30px 10px;
+  background-color: var(--secondaryStat);
 }
 
 .clear {
