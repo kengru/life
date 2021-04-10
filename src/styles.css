@@ -169,7 +169,7 @@ td {
 
 .gameTable {
   flex: 4;
-  padding: 10em;
+  padding: 5em 7em;
 }
 
 .aliveCell {
