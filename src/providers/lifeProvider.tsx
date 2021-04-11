@@ -28,7 +28,7 @@ interface IContext {
 }
 
 const LifeContext = createContext<IContext>({
-  speed: 100,
+  speed: 200,
   generation: 0,
   alive: 0,
   dead: 0,
@@ -55,7 +55,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   );
   const [playState, setPlayState] = useState<PlayState>("cleared");
   const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
-  const [speed, setSpeed] = useState(100);
+  const [speed, setSpeed] = useState(200);
   const [generation, setGeneration] = useState(0);
   const [alive, setAlive] = useState(0);
   const [dead, setDead] = useState(0);
