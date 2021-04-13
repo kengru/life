@@ -2,10 +2,17 @@ import { useLife } from "../../providers/lifeProvider";
 
 export const Cell = (props: CellProps) => {
   const { i, j } = props;
-  const { clicked, lifeState, playState, changeState } = useLife();
+  const {
+    clicked,
+    lifeState,
+    playState,
+    changeState,
+    changeClicked
+  } = useLife();
 
   const onClick = () => {
-    if (playState === "stopped") {
+    if (playState === "stopped" || "cleared") {
+      changeClicked(true);
       changeState(i, j);
     }
   };
@@ -16,12 +23,13 @@ export const Cell = (props: CellProps) => {
       className={lifeState[i][j] ? "aliveCell" : "deadCell"}
       onMouseOver={
         clicked
-          ? playState !== "playing" && playState !== "stopped"
+          ? playState !== "playing"
             ? () => changeState(i, j)
             : undefined
           : undefined
       }
       onMouseDown={onClick}
+      onMouseUp={() => changeClicked(false)}
       onClick={onClick}
     ></td>
   );

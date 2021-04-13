@@ -3,7 +3,7 @@ import {
   useContext,
   useCallback,
   createContext,
-  FunctionComponent,
+  FunctionComponent
 } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { generateInitialLife } from "../utils/modification";
@@ -39,13 +39,13 @@ const LifeContext = createContext<IContext>({
   playState: "cleared",
   dimensions: {
     i: 15,
-    j: 30,
+    j: 30
   },
   setSpeed: () => {},
   setDimensions: () => {},
   changePlayState: () => {},
   changeState: () => {},
-  changeClicked: () => {},
+  changeClicked: () => {}
 });
 
 export const LifeProvider: FunctionComponent = ({ children }) => {
@@ -70,6 +70,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
     setDead(0);
     setBorn(0);
     setDied(0);
+    setPlayState("cleared");
   }, []);
 
   const changeState = useCallback(
@@ -112,7 +113,7 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
         setDimensions: setDimensions,
         changePlayState: setPlayState,
         changeClicked: setClicked,
-        changeState,
+        changeState
       }}
     >
       {children}

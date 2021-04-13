@@ -13,7 +13,7 @@ export const Table = (props: TableProps) => {
   return (
     <div className="gameTable">
       <table
-        onMouseDown={() => changeClicked(true)}
+        // onMouseDown={() => changeClicked(true)}
         onMouseUp={() => changeClicked(false)}
       >
         <tbody>{tableElements}</tbody>
