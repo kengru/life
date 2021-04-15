@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Button } from "./Button";
 
 const testingProps: ButtonProps = {
@@ -11,5 +11,6 @@ describe("Button", () => {
     render(<Button {...testingProps} />);
 
     expect(screen.getByText("Clear")).toBeInTheDocument();
+    // expect(screen.getByRole())
   });
 });
