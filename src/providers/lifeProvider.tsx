@@ -23,7 +23,7 @@ interface IContext {
   setSpeed: (speed: number) => void;
   setDimensions: (rows: number, columns: number) => void;
   changePlayState: (state: PlayState) => void;
-  changeState: (i: number, j: number) => void;
+  changeState: (i: number, j: number, value: boolean) => void;
   changeClicked: (click: boolean) => void;
 }
 
@@ -74,9 +74,9 @@ export const LifeProvider: FunctionComponent = ({ children }) => {
   }, []);
 
   const changeState = useCallback(
-    (i: number, j: number) => {
+    (i: number, j: number, value: boolean) => {
       const newGameState = [...lifeState];
-      newGameState[i][j] = !lifeState[i][j];
+      newGameState[i][j] = value;
       setLifeState(newGameState);
     },
     [lifeState]

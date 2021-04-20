@@ -10,11 +10,21 @@ export const Cell = (props: CellProps) => {
     changeClicked
   } = useLife();
 
-  const onClick = () => {
+  const onLife = () => {
     if (playState === "stopped" || "cleared") {
-      changeClicked(true);
-      changeState(i, j);
+      changeState(i, j, true);
     }
+  };
+
+  const onDeath = () => {
+    if (playState === "stopped" || "cleared") {
+      changeState(i, j, false);
+    }
+  };
+
+  const onMouseD = (lifeOrDeath: () => void) => {
+    changeClicked(true);
+    lifeOrDeath();
   };
 
   return (
@@ -24,13 +34,15 @@ export const Cell = (props: CellProps) => {
       onMouseOver={
         clicked
           ? playState !== "playing"
-            ? () => changeState(i, j)
+            ? () => onLife()
             : undefined
           : undefined
       }
-      onMouseDown={onClick}
+      onMouseDown={
+        lifeState[i][j] ? () => onMouseD(onDeath) : () => onMouseD(onLife)
+      }
       onMouseUp={() => changeClicked(false)}
-      onClick={onClick}
+      onClick={onLife}
     ></td>
   );
 };
