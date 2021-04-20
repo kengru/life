@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import { useLife } from "../providers/lifeProvider";
-import { Button } from "../components/UI/Button";
-import { Stats } from "../components/UI/Stats";
-import { Options } from "../components/UI/Options";
+import { Button } from "../components/UI/Life/Button";
+import { Stats } from "../components/UI/Life/Stats";
+import { Options } from "../components/UI/Life/Options";
 
 export const SideConfig = () => {
   const {
