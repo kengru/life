@@ -56,12 +56,18 @@ td {
   background-color: var(--alive);
 }
 
+.elementaryStart .button {
+  font-size: 48px;
+  font-family: "Source Code Pro";
+  text-align: center;
+}
+
 .pauseButtons {
   display: flex;
   justify-content: space-between;
 }
 
-.play {
+.play, .start {
   background-color: var(--alive);
 }
 

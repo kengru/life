@@ -1,5 +1,5 @@
-import { Life } from "./containers/Life";
-import { SideConfig } from "./containers/SideConfig";
+import { ElementaryCA } from "./containers/ElementaryCA";
+// import { Life } from "./containers/Life";
 import { LifeProvider } from "./providers/lifeProvider";
 
 import "./styles.css";
@@ -7,10 +7,8 @@ import "./styles.css";
 export const App = () => {
   return (
     <LifeProvider>
-      <div className="whole">
-        <SideConfig />
-        <Life />
-      </div>
+      {/* <Life /> */}
+      <ElementaryCA />
     </LifeProvider>
   );
 };

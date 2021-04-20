@@ -1,5 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
-import { dataParse } from "../../../utils/utility";
+import { dataParse } from "../../utils/utility";
 
 export const Options = (props: OptionsProps) => {
   const { rows, columns, speed, applyOptions } = props;
