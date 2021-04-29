@@ -1,16 +1,21 @@
-import { Life } from "./containers/Life";
-import { SideConfig } from "./containers/SideConfig";
+import { Switch, Route } from "react-router-dom";
+import { Life } from "./containers/Life/Life";
 import { LifeProvider } from "./providers/lifeProvider";
+import { ElementaryCA } from "./containers/ElementaryCA/ElementaryCA";
 
 import "./styles.css";
 
 export const App = () => {
   return (
-    <LifeProvider>
-      <div className="whole">
-        <SideConfig />
-        <Life />
-      </div>
-    </LifeProvider>
+    <Switch>
+      <Route path="/life">
+        <LifeProvider>
+          <Life />
+        </LifeProvider>
+      </Route>
+      <Route path="/1d">
+        <ElementaryCA />
+      </Route>
+    </Switch>
   );
 };

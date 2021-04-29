@@ -1,0 +1,104 @@
+:root {
+  --alive: #7fdb4a;
+  --aliveRecent: #b2e992;
+  --aliveOld: #5fa438;
+  --primaryStat: #3281c7;
+  --secondaryStat: #353494;
+  --tertiaryStat: #ed3239;
+  --whiteSpace: #f2f2f2;
+  --diedNow: #cccccc;
+  --deadCell: #1a1a1a;
+  --tableBorder: #141414;
+}
+
+.elementaryFront {
+  text-align: center;
+}
+
+.elementaryTitle {
+  font-size: 64px;
+  font-family: "Source Code Pro";
+  font-weight: 700;
+}
+
+.elementarySubtitle {
+  font-size: 32px;
+  font-family: "Source Code Pro";
+  font-weight: 400;
+}
+
+.elementaryRuleNumber {
+  text-align: center;
+  font-size: 32px;
+  font-family: "Source Code Pro";
+  font-weight: 700;
+}
+
+.elementaryStart {
+  display: flex;
+  font-size: 48px;
+  justify-content: center;
+  font-family: "Source Code Pro";
+}
+
+.rules {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.rule-outline {
+  display: flex;
+  width: 144px;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.rule-outline:hover {
+  background-color: var(--aliveRecent);
+}
+
+.rule-outline:hover .rule-def {
+  background-color: var(--whiteSpace);
+  border: 4px solid var(--whiteSpace);
+}
+
+.rule-outline .on,
+.rule-def .on {
+  background-color: var(--alive) !important;
+}
+
+.rule-outline .off,
+.rule-def .off {
+  background-color: var(--deadCell) !important;
+}
+
+.rule-def-outline {
+  display: flex;
+  width: 144px;
+  flex-direction: row;
+}
+
+.rule-def {
+  height: 40px;
+  width: 40px;
+  border: 4px solid var(--alive);
+  background-color: black;
+}
+
+.rule-state {
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border: 4px solid var(--alive);
+  margin: auto;
+}
+
+.rule-active {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 30px;
+  font-family: "Source Code Pro";
+}
