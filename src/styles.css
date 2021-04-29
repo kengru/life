@@ -67,7 +67,8 @@ td {
   justify-content: space-between;
 }
 
-.play, .start {
+.play,
+.start {
   background-color: var(--alive);
 }
 
