@@ -1,0 +1,155 @@
+.sideConfig {
+  flex: 1.1;
+  padding: 28px;
+  font-family: "Source Code Pro";
+  background-color: var(--deadCell);
+}
+
+.title {
+  color: var(--whiteSpace);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.button {
+  display: flex;
+  height: 10px;
+  padding: 30px;
+  align-items: center;
+  cursor: pointer;
+  color: var(--deadCell);
+  font-size: 30px;
+  font-weight: 800;
+  background-color: var(--alive);
+}
+
+.elementaryStart .button {
+  font-size: 48px;
+  font-family: "Source Code Pro";
+  text-align: center;
+}
+
+.pauseButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.play,
+.start {
+  background-color: var(--alive);
+}
+
+.pause {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  text-align: center;
+  padding: 30px 10px 30px 10px;
+  background-color: var(--secondaryStat);
+}
+
+.stop {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  text-align: center;
+  padding: 30px 10px 30px 10px;
+  background-color: var(--tertiaryStat);
+}
+
+.resume {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: var(--whiteSpace);
+  padding: 30px 10px 30px 10px;
+  background-color: var(--secondaryStat);
+}
+
+.clear {
+  color: var(--whiteSpace);
+  background-color: var(--primaryStat);
+}
+
+.apply {
+  margin-top: 20px;
+  background-color: var(--whiteSpace);
+}
+
+.stats {
+  color: var(--whiteSpace);
+}
+
+.options {
+  color: var(--whiteSpace);
+  margin-top: 20px;
+}
+
+.stats h2,
+.options h2 {
+  margin-bottom: 0px;
+}
+
+.stat {
+  display: flex;
+  margin: 8px 0px 8px 0px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.amount {
+  width: 70px;
+}
+
+/* stat colors */
+.gen,
+.live {
+  color: var(--aliveOld);
+}
+
+.dead {
+  color: var(--tertiaryStat);
+}
+
+.born {
+  color: var(--aliveRecent);
+}
+
+.died {
+  color: var(--diedNow);
+}
+/* end of stat colors */
+
+.options form {
+  margin-top: 20px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 5px 0px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.option input {
+  width: 50px;
+  font-size: 18px;
+  margin-right: 20px;
+  font-family: "Source Code Pro";
+}
+
+.gameTable {
+  flex: 4;
+  padding: 5em 7em;
+}
+
+.aliveCell {
+  background-color: var(--alive);
+}
+
+.deadCell {
+  background-color: var(--deadCell);
+}

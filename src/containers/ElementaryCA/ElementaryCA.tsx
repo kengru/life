@@ -1,12 +1,11 @@
 import _ from "lodash";
 import { useState } from "react";
-import { Home } from "../components/ElementaryCA/Home";
+import { Home } from "../../components/ElementaryCA/Home";
 
-import { useInterval } from "../hooks/useInterval";
-// import { nextGen } from "../utils/cellular-one";
-import { genZero } from "../utils/modification";
+import { useInterval } from "../../hooks/useInterval";
+import { genZero } from "../../utils/modification";
 
-import "./elementary.css";
+import "./Elementary.css";
 
 export const ElementaryCA = () => {
   const [gens, setGens] = useState<boolean[][]>(genZero(11));

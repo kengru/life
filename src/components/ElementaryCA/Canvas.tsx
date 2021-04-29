@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Rules } from "./Rules";
 import { Button } from "../UI/Button";
 
-export const Home = () => (
+export const Canvas = () => (
   <Fragment>
     <div className="elementaryFront">
       <p className="elementaryTitle">Ken's Cellular Automata 1D</p>
