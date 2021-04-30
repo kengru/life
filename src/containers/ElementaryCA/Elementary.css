@@ -11,30 +11,30 @@
   --tableBorder: #141414;
 }
 
-.elementaryFront {
+.elementary-front {
   text-align: center;
 }
 
-.elementaryTitle {
+.elementary-title {
   font-size: 64px;
   font-family: "Source Code Pro";
   font-weight: 700;
 }
 
-.elementarySubtitle {
+.elementary-subtitle {
   font-size: 32px;
   font-family: "Source Code Pro";
   font-weight: 400;
 }
 
-.elementaryRuleNumber {
+.elementary-rule-number {
   text-align: center;
   font-size: 32px;
   font-family: "Source Code Pro";
   font-weight: 700;
 }
 
-.elementaryStart {
+.elementary-start {
   display: flex;
   font-size: 48px;
   justify-content: center;

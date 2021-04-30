@@ -36,7 +36,7 @@ export const Canvas = () => {
   };
 
   const draw = (p5: p5Types) => {
-    p5.background(220);
+    p5.background(26);
     cells.forEach((row) => {
       row.forEach((cell) => {
         cell.show();
@@ -66,7 +66,7 @@ class Cell {
   ) {
     this.pos = p5.createVector(x, y);
     this.size = size;
-    this.color = p5.color(240);
+    this.color = p5.color(127, 219, 74);
     this.active = active;
     this.p5 = p5;
   }
@@ -78,9 +78,9 @@ class Cell {
   show() {
     this.p5.noStroke();
     if (this.active) {
-      this.p5.fill(65);
-    } else {
       this.p5.fill(this.color);
+    } else {
+      this.p5.fill(26);
     }
     this.p5.rect(this.pos.x, this.pos.y, this.size, this.size);
   }

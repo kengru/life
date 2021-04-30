@@ -1,24 +1,36 @@
+import { useCAOne } from "../../providers/caOneProvider";
+
 interface RuleProps {
-  one: boolean;
-  two: boolean;
-  three: boolean;
-  active: boolean;
+  ruleKey: string;
 }
 
-export const Rule = (props: RuleProps) => {
-  const { one, two, three, active } = props;
+const stringToBool = (str: string) => (str === "1" ? true : false);
+
+export const Rule: React.FC<RuleProps> = (props) => {
+  const { ruleKey } = props;
+  const { rules, changeActive } = useCAOne();
+  const state = ruleKey.split(" ");
 
   return (
-    <div className="rule-outline">
+    <div
+      className="rule-outline"
+      onClick={() => changeActive(ruleKey, !rules[ruleKey])}
+    >
       <div className="rule-def-outline">
-        <div className={`rule-def ${one ? "on" : "off"}`}></div>
-        <div className={`rule-def ${two ? "on" : "off"}`}></div>
-        <div className={`rule-def ${three ? "on" : "off"}`}></div>
+        <div
+          className={`rule-def ${stringToBool(state[0]) ? "on" : "off"}`}
+        ></div>
+        <div
+          className={`rule-def ${stringToBool(state[1]) ? "on" : "off"}`}
+        ></div>
+        <div
+          className={`rule-def ${stringToBool(state[2]) ? "on" : "off"}`}
+        ></div>
       </div>
       <div className="rule-state-outline">
-        <div className={`rule-state ${active ? "on" : "off"}`}></div>
+        <div className={`rule-state ${rules[ruleKey] ? "on" : "off"}`}></div>
       </div>
-      <span className="rule-active">{active ? "1" : "0"}</span>
+      <span className="rule-active">{rules[ruleKey] ? "1" : "0"}</span>
     </div>
   );
 };

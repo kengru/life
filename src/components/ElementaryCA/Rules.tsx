@@ -3,14 +3,14 @@ import { Rule } from "./Rule";
 export const Rules = () => {
   return (
     <div className="rules">
-      <Rule one={true} two={false} three={true} active={true} />
-      <Rule one={false} two={true} three={false} active={false} />
-      <Rule one={false} two={true} three={false} active={false} />
-      <Rule one={false} two={true} three={false} active={true} />
-      <Rule one={false} two={true} three={false} active={false} />
-      <Rule one={false} two={true} three={false} active={false} />
-      <Rule one={false} two={true} three={false} active={true} />
-      <Rule one={false} two={true} three={false} active={false} />
+      <Rule ruleKey={"0 0 0"} />
+      <Rule ruleKey={"0 0 1"} />
+      <Rule ruleKey={"0 1 0"} />
+      <Rule ruleKey={"0 1 1"} />
+      <Rule ruleKey={"1 0 0"} />
+      <Rule ruleKey={"1 0 1"} />
+      <Rule ruleKey={"1 1 0"} />
+      <Rule ruleKey={"1 1 1"} />
     </div>
   );
 };
