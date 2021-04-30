@@ -4,7 +4,7 @@ import { Canvas } from "./Canvas";
 import { useCAOne } from "../../providers/caOneProvider";
 
 export const Home: React.FC = () => {
-  const { ruleNumber, playing, changePlaying } = useCAOne();
+  const { rules, ruleNumber, playing, changePlaying } = useCAOne();
 
   if (playing === "stopped") {
     return (
@@ -27,5 +27,5 @@ export const Home: React.FC = () => {
     );
   }
 
-  return <Canvas />;
+  return <Canvas rules={rules} />;
 };

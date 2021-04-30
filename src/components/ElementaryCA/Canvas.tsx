@@ -1,23 +1,18 @@
 import Sketch from "react-p5";
 import p5Types from "p5";
 
+interface CanvasProps {
+  rules: Record<string, boolean>;
+}
+
 const cells: Cell[][] = [];
-const rules: Record<string, boolean> = {
-  "0 0 0": false,
-  "0 0 1": true,
-  "0 1 0": true,
-  "0 1 1": true,
-  "1 0 0": true,
-  "1 0 1": false,
-  "1 1 0": false,
-  "1 1 1": false
-};
 const speed = 20;
 const size = 4;
 const lines = 90;
 const max = 1 + 2 * lines;
 
-export const Canvas = () => {
+export const Canvas: React.FC<CanvasProps> = (props) => {
+  const { rules } = props;
   const defH = size * lines;
   const defW = size * max;
 
@@ -43,7 +38,7 @@ export const Canvas = () => {
       });
     });
     if (cells.length < lines) {
-      cells.push(createNewAr(cells[cells.length - 1], cells.length, p5));
+      cells.push(createNewAr(cells[cells.length - 1], cells.length, rules, p5));
     }
   };
 
@@ -86,17 +81,22 @@ class Cell {
   }
 }
 
-function createNewAr(prevRow: Cell[], idx: number, p5: p5Types) {
+function createNewAr(
+  prevRow: Cell[],
+  idx: number,
+  rules: Record<string, boolean>,
+  p5: p5Types
+) {
   const newRow = [];
   for (let i = 0; i < prevRow.length; i++) {
     newRow.push(
-      new Cell(i * size, idx * size, size, applyRules(prevRow, i), p5)
+      new Cell(i * size, idx * size, size, applyRules(prevRow, i, rules), p5)
     );
   }
   return newRow;
 }
 
-function applyRules(row: Cell[], idx: number) {
+function applyRules(row: Cell[], idx: number, rules: Record<string, boolean>) {
   const keys = Object.keys(rules);
   for (const key of keys) {
     const rule = key.split(" ");
