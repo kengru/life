@@ -9,9 +9,16 @@
   --diedNow: #cccccc;
   --deadCell: #1a1a1a;
   --tableBorder: #141414;
+  --rectRuleSize: 40px;
+}
+
+.elementary-home {
+  height: 100vh;
+  position: relative;
 }
 
 .elementary-front {
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -19,6 +26,7 @@
   font-size: 64px;
   font-family: "Source Code Pro";
   font-weight: 700;
+  margin-top: 0px;
 }
 
 .elementary-subtitle {
@@ -28,10 +36,21 @@
 }
 
 .elementary-rule-number {
+  position: static;
+  top: 50%;
+  left: 50%;
   text-align: center;
   font-size: 32px;
   font-family: "Source Code Pro";
   font-weight: 700;
+  transition: top 0.6s, left 0.4s;
+}
+
+.elementary-rule-playing {
+  position: absolute;
+  top: 85%;
+  left: 85%;
+  transition: top 0.6s, left 0.4s;
 }
 
 .elementary-start {
@@ -41,12 +60,45 @@
   font-family: "Source Code Pro";
 }
 
+.elementary-button {
+  position: static;
+  top: 60%;
+  left: 50%;
+  display: flex;
+  height: 10px;
+  padding: 30px;
+  align-items: center;
+  cursor: pointer;
+  color: var(--deadCell);
+  font-size: 30px;
+  font-weight: 800;
+  background-color: var(--alive);
+}
+
+.stop {
+  position: absolute;
+  top: 87%;
+  left: 5%;
+  transition: top 0.6s, left 0.4s;
+  background-color: var(--tertiaryStat);
+}
+
 .rules {
   display: flex;
+  width: 100%;
+  top: 40%;
+  position: static;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
+}
+
+.rules-playing {
+  position: absolute;
+  top: 82%;
+  transition: top 0.4s, transform 0.4s;
+  transform: scale(0.6);
 }
 
 .rule-outline {
@@ -82,15 +134,15 @@
 }
 
 .rule-def {
-  height: 40px;
-  width: 40px;
+  height: var(--rectRuleSize);
+  width: var(--rectRuleSize);
   border: 4px solid var(--alive);
   background-color: black;
 }
 
 .rule-state {
-  height: 40px;
-  width: 40px;
+  height: var(--rectRuleSize);
+  width: var(--rectRuleSize);
   background-color: black;
   border: 4px solid var(--alive);
   margin: auto;
@@ -102,3 +154,8 @@
   font-size: 30px;
   font-family: "Source Code Pro";
 }
+/* 
+.react-p5 canvas {
+  height: 40% !important;
+  width: 100% !important;
+} */

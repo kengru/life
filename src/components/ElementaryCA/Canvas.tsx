@@ -5,14 +5,14 @@ interface CanvasProps {
   rules: Record<string, boolean>;
 }
 
-const cells: Cell[][] = [];
-const speed = 20;
-const size = 4;
-const lines = 90;
+const speed = 30;
+const size = 10;
+const lines = 50;
 const max = 1 + 2 * lines;
 
 export const Canvas: React.FC<CanvasProps> = (props) => {
   const { rules } = props;
+  const cells: Cell[][] = [];
   const defH = size * lines;
   const defW = size * max;
 
@@ -39,6 +39,13 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
     });
     if (cells.length < lines) {
       cells.push(createNewAr(cells[cells.length - 1], cells.length, rules, p5));
+    } else {
+      cells.forEach((row) => {
+        row.forEach((cell) => {
+          cell.upLevel();
+        });
+      });
+      cells.shift();
     }
   };
 
@@ -75,6 +82,7 @@ class Cell {
     if (this.active) {
       this.p5.fill(this.color);
     } else {
+      this.p5.stroke(12);
       this.p5.fill(26);
     }
     this.p5.rect(this.pos.x, this.pos.y, this.size, this.size);
