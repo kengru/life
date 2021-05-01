@@ -46,6 +46,11 @@
   transition: top 0.6s, left 0.4s;
 }
 
+.rule-input {
+  width: 8%;
+  all: unset;
+};
+
 .elementary-rule-playing {
   position: absolute;
   top: 85%;
@@ -154,8 +159,8 @@
   font-size: 30px;
   font-family: "Source Code Pro";
 }
-/* 
-.react-p5 canvas {
+
+/* .react-p5 canvas {
   height: 40% !important;
   width: 100% !important;
 } */

@@ -24,7 +24,13 @@ export const Home: React.FC = () => {
           playing === "playing" ? "elementary-rule-playing" : ""
         }`}
       >
-        Rule {ruleNumber}
+        Rule{" "}
+        <input
+          style={{ all: "unset", width: "6%" }}
+          type="number"
+          maxLength={3}
+          value={ruleNumber}
+        />
       </p>
       <div className="elementary-start">
         <Button

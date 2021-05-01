@@ -5,19 +5,24 @@ interface CanvasProps {
   rules: Record<string, boolean>;
 }
 
-const speed = 30;
-const size = 10;
+const speed = 60;
+// const size = 10;
 const lines = 50;
-const max = 1 + 2 * lines;
+// const max = 1 + 2 * lines;
+const w = window.innerWidth;
+const h = window.innerHeight - 200;
+const size = h / lines;
+const max = w / size;
 
 export const Canvas: React.FC<CanvasProps> = (props) => {
   const { rules } = props;
   const cells: Cell[][] = [];
-  const defH = size * lines;
-  const defW = size * max;
+
+  // const defH = size * lines;
+  // const defW = size * max;
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
-    p5.createCanvas(defW, defH).parent(canvasParentRef);
+    p5.createCanvas(w, h).parent(canvasParentRef);
     const initialRow = [];
     for (let i = 0; i < max; i++) {
       if (i === Math.floor(max / 2)) {
@@ -82,8 +87,8 @@ class Cell {
     if (this.active) {
       this.p5.fill(this.color);
     } else {
-      this.p5.stroke(12);
-      this.p5.fill(26);
+      this.p5.stroke(8);
+      this.p5.fill(10);
     }
     this.p5.rect(this.pos.x, this.pos.y, this.size, this.size);
   }
