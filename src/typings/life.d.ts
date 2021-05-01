@@ -1,4 +1,3 @@
-type PlayState = "playing" | "stopped" | "paused" | "cleared";
 type Dimensions = {
   i: number;
   j: number;
@@ -49,10 +48,10 @@ interface ButtonProps {
 type AliveDead = {
   alive: number;
   dead: number;
-}
+};
 
 type GenInfo = {
   nextGen: boolean[][];
   born: number;
   died: number;
-}
+};
