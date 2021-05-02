@@ -8,7 +8,10 @@ export const Rules: React.FC<IRulesProps> = (props) => {
   const { started } = props;
 
   return (
-    <div className={`rules ${started ? "rules-playing" : ""}`}>
+    <div
+      className={`rules ${started ? "rules-playing" : ""}`}
+      style={{ pointerEvents: started ? "none" : "auto" }}
+    >
       <Rule ruleKey={"1 1 1"} />
       <Rule ruleKey={"1 1 0"} />
       <Rule ruleKey={"1 0 1"} />

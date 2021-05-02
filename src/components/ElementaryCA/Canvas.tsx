@@ -10,16 +10,13 @@ const speed = 60;
 const lines = 50;
 // const max = 1 + 2 * lines;
 const w = window.innerWidth;
-const h = window.innerHeight - 200;
+const h = window.innerHeight - 180;
 const size = h / lines;
 const max = w / size;
 
 export const Canvas: React.FC<CanvasProps> = (props) => {
   const { rules } = props;
   const cells: Cell[][] = [];
-
-  // const defH = size * lines;
-  // const defW = size * max;
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(w, h).parent(canvasParentRef);
