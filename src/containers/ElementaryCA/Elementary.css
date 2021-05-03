@@ -75,7 +75,7 @@
   background-color: var(--alive);
 }
 
-.stop {
+.elementary-button.stop {
   position: absolute;
   top: 87%;
   left: 5%;

@@ -34,12 +34,12 @@
   justify-content: space-between;
 }
 
-.button .play,
-.button .start {
+.button.play,
+.button.start {
   background-color: var(--alive);
 }
 
-.button .pause {
+.button.pause {
   width: 40%;
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@
   background-color: var(--secondaryStat);
 }
 
-.button .stop {
+.button.stop {
   width: 40%;
   display: flex;
   justify-content: center;
