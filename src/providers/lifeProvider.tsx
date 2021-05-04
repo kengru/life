@@ -38,8 +38,8 @@ const LifeContext = createContext<IContext>({
   lifeState: [],
   playState: "cleared",
   dimensions: {
-    i: 15,
-    j: 30
+    i: 30,
+    j: 45
   },
   setSpeed: () => {},
   setDimensions: () => {},
@@ -51,10 +51,10 @@ const LifeContext = createContext<IContext>({
 export const LifeProvider: FunctionComponent = ({ children }) => {
   const [clicked, setClicked] = useState(false);
   const [lifeState, setLifeState] = useState<boolean[][]>(
-    generateInitialLife(15, 30)
+    generateInitialLife(30, 45)
   );
   const [playState, setPlayState] = useState<PlayState>("cleared");
-  const [dimensions, setD] = useState<Dimensions>({ i: 15, j: 30 });
+  const [dimensions, setD] = useState<Dimensions>({ i: 30, j: 45 });
   const [speed, setSpeed] = useState(100);
   const [generation, setGeneration] = useState(0);
   const [alive, setAlive] = useState(0);

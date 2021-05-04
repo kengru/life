@@ -9,6 +9,7 @@
   --diedNow: #cccccc;
   --deadCell: #1a1a1a;
   --tableBorder: #141414;
+  --tdSize: 20px;
 }
 
 body {
@@ -22,8 +23,8 @@ table {
 }
 
 td {
-  height: 30px;
-  width: 30px;
+  height: var(--tdSize);
+  width: var(--tdSize);
   border: 1px solid var(--tableBorder);
   /* transition: background-color 100ms; */
 }
