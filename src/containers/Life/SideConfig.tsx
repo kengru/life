@@ -17,8 +17,8 @@ export const SideConfig = () => {
     setDimensions,
     changePlayState
   } = useLife();
-  const [rows, setRows] = useState(30);
-  const [columns, setColumns] = useState(45);
+  const [rows, setRows] = useState(20);
+  const [columns, setColumns] = useState(30);
 
   const applyOptions = useCallback(
     (rows: number, columns: number, speed: number) => {

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useLife } from "../../providers/lifeProvider";
 
 export const Cell = (props: CellProps) => {
@@ -27,8 +28,13 @@ export const Cell = (props: CellProps) => {
     lifeOrDeath();
   };
 
+  const dim = useMemo(() => (lifeState.length + lifeState[0].length) / 2, [
+    lifeState
+  ]);
+
   return (
     <td
+      style={{ height: dim, width: dim }}
       draggable={false}
       className={lifeState[i][j] ? "aliveCell" : "deadCell"}
       onMouseOver={

@@ -142,7 +142,10 @@
 }
 
 .gameTable {
+  display: flex;
   flex: 4;
+  justify-content: center;
+  align-items: center;
   padding: 5em 7em;
 }
 
