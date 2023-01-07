@@ -51,6 +51,7 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
     }
   };
 
+  // @ts-ignore
   return <Sketch setup={setup} draw={draw} />;
 };
 

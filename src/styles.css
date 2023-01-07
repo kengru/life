@@ -33,3 +33,11 @@ td {
   display: flex;
   height: 100vh;
 }
+
+.options {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  font-size: 2rem;
+  gap: 1em;
+}

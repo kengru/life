@@ -10,8 +10,10 @@ export const App = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        <Link to="/life">Life</Link>
-        <Link to="/1d">ElementaryCA</Link>
+        <div className="options">
+          <Link to="/life">Life</Link>
+          <Link to="/1d">ElementaryCA</Link>
+        </div>
       </Route>
       <Route path="/life">
         <LifeProvider>
