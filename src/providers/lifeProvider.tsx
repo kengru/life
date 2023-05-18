@@ -3,7 +3,6 @@ import {
   useContext,
   useCallback,
   createContext,
-  FunctionComponent,
   PropsWithChildren
 } from "react";
 import { useInterval } from "../hooks/useInterval";

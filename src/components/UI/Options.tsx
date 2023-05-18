@@ -5,7 +5,7 @@ export const Options = (props: OptionsProps) => {
   const { rows, columns, speed, applyOptions } = props;
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = (data: OptionsForm) => {
+  const onSubmit = (data: any) => {
     const parsed = dataParse(data);
     applyOptions(parsed.rows, parsed.columns, parsed.speed);
   };
@@ -21,7 +21,7 @@ export const Options = (props: OptionsProps) => {
               name="rows"
               control={control}
               defaultValue={rows}
-              render={({ onChange, value }) => (
+              render={({ field: { onChange, value } }) => (
                 <input type="number" value={value} onChange={onChange} />
               )}
             />
@@ -34,7 +34,7 @@ export const Options = (props: OptionsProps) => {
               name="columns"
               control={control}
               defaultValue={columns}
-              render={({ onChange, value }) => (
+              render={({ field: { onChange, value } }) => (
                 <input type="number" value={value} onChange={onChange} />
               )}
             />
@@ -47,7 +47,7 @@ export const Options = (props: OptionsProps) => {
               name="speed"
               control={control}
               defaultValue={speed / 1000}
-              render={({ onChange, value }) => (
+              render={({ field: { onChange, value } }) => (
                 <input
                   type="number"
                   value={value}

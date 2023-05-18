@@ -3,7 +3,7 @@ import {
   useContext,
   useCallback,
   createContext,
-  FunctionComponent
+  PropsWithChildren
 } from "react";
 import { initialRules } from "../utils/cellular-one";
 
@@ -19,11 +19,11 @@ const CAOneContext = createContext<IContext>({
   playing: "stopped",
   ruleNumber: 30,
   rules: initialRules,
-  changeActive: () => {},
-  changePlaying: () => {}
+  changeActive: () => { },
+  changePlaying: () => { }
 });
 
-export const CAOneProvider: FunctionComponent = ({ children }) => {
+export function CAOneProvider({ children }: PropsWithChildren) {
   const [playing, setPlaying] = useState<PlayState>("stopped");
   const [ruleNumber, setRuleNumber] = useState(30);
   const [rules, setRules] = useState(initialRules);
