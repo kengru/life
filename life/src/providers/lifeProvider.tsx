@@ -3,7 +3,8 @@ import {
   useContext,
   useCallback,
   createContext,
-  FunctionComponent
+  FunctionComponent,
+  PropsWithChildren
 } from "react";
 import { useInterval } from "../hooks/useInterval";
 import { generateInitialLife } from "../utils/modification";
@@ -41,14 +42,15 @@ const LifeContext = createContext<IContext>({
     i: 20,
     j: 30
   },
-  setSpeed: () => {},
-  setDimensions: () => {},
-  changePlayState: () => {},
-  changeState: () => {},
-  changeClicked: () => {}
+  setSpeed: () => { },
+  setDimensions: () => { },
+  changePlayState: () => { },
+  changeState: () => { },
+  changeClicked: () => { }
 });
 
-export const LifeProvider: FunctionComponent = ({ children }) => {
+
+export function LifeProvider({ children }: PropsWithChildren) {
   const [clicked, setClicked] = useState(false);
   const [lifeState, setLifeState] = useState<boolean[][]>(
     generateInitialLife(20, 30)

@@ -4,7 +4,7 @@ import { useLife } from "../../providers/lifeProvider";
 
 import "./Life.css";
 
-export const Life = () => {
+export function Life() {
   const { dimensions } = useLife();
 
   return (
