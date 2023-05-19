@@ -36,8 +36,8 @@ td {
 
 .options {
   display: flex;
-  text-align: center;
+  /* text-align: center; */
   flex-direction: column;
-  font-size: 2rem;
+  /* font-size: 2rem; */
   gap: 1em;
 }

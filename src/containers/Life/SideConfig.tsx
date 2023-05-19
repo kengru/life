@@ -4,7 +4,7 @@ import { Button } from "../../components/UI/Button";
 import { Stats } from "../../components/UI/Stats";
 import { Options } from "../../components/UI/Options";
 
-export const SideConfig = () => {
+export function SideConfig() {
   const {
     speed,
     generation,

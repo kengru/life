@@ -46,7 +46,7 @@ export const Options = (props: OptionsProps) => {
             <Controller
               name="speed"
               control={control}
-              defaultValue={speed / 1000}
+              defaultValue={speed / 100}
               render={({ field: { onChange, value } }) => (
                 <input
                   type="number"
